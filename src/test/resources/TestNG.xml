@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MainTest" thread-count="2" parallel="methods">
+    <test name="test 1">
+        <classes>
+            <class name="tests.MainTest"></class>
+            <parameter name="username" value="liza.khval@mail.ru"></parameter>
+            <parameter name="psw" value="Polina1234"></parameter>
+        </classes>
+    </test>
+</suite>
