@@ -21,10 +21,30 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void loginNegativeTest(){
+    public void loginNegativeTest1(){
 
         LoginSteps loginSteps = new LoginSteps(driver);
         loginSteps.login("fail", readProperties.getPassword());
+
+        Assert.assertEquals(new LoginPage(driver,false).getErrorMessage(),
+                "Email/Login or Password is incorrect. Please try again.","Incorrect message");
+    }
+
+    @Test
+    public void loginNegativeTest2(){
+
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.login(readProperties.getUserName(), "fail");
+
+        Assert.assertEquals(new LoginPage(driver,false).getErrorMessage(),
+                "Email/Login or Password is incorrect. Please try again.","Incorrect message");
+    }
+
+    @Test
+    public void loginNegativeTest3(){
+
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.login("fail", "fail");
 
         Assert.assertEquals(new LoginPage(driver,false).getErrorMessage(),
                 "Email/Login or Password is incorrect. Please try again.","Incorrect message");
@@ -47,7 +67,7 @@ public class MainTest extends BaseTest {
     }
 
     @Parameters({"username","psw"})
-    @Test
+    @Test(enabled = false)
     public void testLoginWithParameters(@Optional("1") String username, @Optional("2") String psw){
         LoginSteps loginSteps = new LoginSteps(driver);
         loginSteps.login(username, psw);
