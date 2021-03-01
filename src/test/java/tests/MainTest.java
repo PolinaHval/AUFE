@@ -7,11 +7,14 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import steps.CreateProjectSteps;
+import steps.DeleteProjectSteps;
+import steps.EditProjectSteps;
 import steps.LoginSteps;
 
 public class MainTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void loginPositiveTest(){
 
         LoginSteps loginSteps = new LoginSteps(driver);
@@ -20,7 +23,7 @@ public class MainTest extends BaseTest {
         Assert.assertTrue(true);
     }
 
-    @Test
+    @Test(priority = 2)
     public void loginNegativeTest1(){
 
         LoginSteps loginSteps = new LoginSteps(driver);
@@ -30,7 +33,7 @@ public class MainTest extends BaseTest {
                 "Email/Login or Password is incorrect. Please try again.","Incorrect message");
     }
 
-    @Test
+    @Test(priority = 3)
     public void loginNegativeTest2(){
 
         LoginSteps loginSteps = new LoginSteps(driver);
@@ -40,7 +43,7 @@ public class MainTest extends BaseTest {
                 "Email/Login or Password is incorrect. Please try again.","Incorrect message");
     }
 
-    @Test
+    @Test(priority = 4)
     public void loginNegativeTest3(){
 
         LoginSteps loginSteps = new LoginSteps(driver);
@@ -50,6 +53,31 @@ public class MainTest extends BaseTest {
                 "Email/Login or Password is incorrect. Please try again.","Incorrect message");
     }
 
+
+    @Test(priority = 5)
+    public void createProjectTest(){
+        CreateProjectSteps createProjectSteps = new CreateProjectSteps(driver);
+        createProjectSteps.create(readProperties.getUserName(), readProperties.getPassword(),
+                readProperties.getNameProject());
+
+        Assert.assertTrue(true);
+    }
+
+    @Test(priority = 6)
+    public void editProjectTest(){
+        EditProjectSteps editProjectSteps = new EditProjectSteps(driver);
+        editProjectSteps.editProject(readProperties.getUserName(), readProperties.getPassword(),
+                readProperties.getNewName());
+        Assert.assertTrue(true);
+    }
+
+    @Test(priority = 7)
+    public void deleteProjectTest(){
+        DeleteProjectSteps deleteProjectSteps = new DeleteProjectSteps(driver);
+        deleteProjectSteps.deleteProject(readProperties.getUserName(), readProperties.getPassword());
+
+        Assert.assertTrue(true);
+    }
 
     @DataProvider(name = "набор кредов")
     public Object [][] credentialsForTest (){
