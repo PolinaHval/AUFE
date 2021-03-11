@@ -3,11 +3,10 @@ package baseEntities;
 import browserService.BrowserService;
 import browserService.ReadProperties;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+import utils.Listener;
 
+@Listeners(Listener.class)
 public class BaseTest {
 
     public WebDriver driver;
@@ -19,7 +18,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(){
         this.driver = new BrowserService().getDriver();
-        driver.get(new ReadProperties().getURL()); // сделать логин страницу на тест рейле, прописать методы, ие
+        driver.get(new ReadProperties().getURL());
 
     }
 
