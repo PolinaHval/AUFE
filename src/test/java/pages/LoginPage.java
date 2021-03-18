@@ -4,6 +4,8 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
 
@@ -25,19 +27,15 @@ public class LoginPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        try {
-            return driver.findElement(By.id("button_primary")).isDisplayed();
-        }catch (Exception exception){
-            return false;
-        }
+        return waits.isElementDisplayed(By.id("button_primary"));
     }
 
     public WebElement getLogin(){
-        return driver.findElement(loginSelector);
+        return waits.getElementBy(loginSelector);
     }
 
     public WebElement getPassword(){
-        return driver.findElement(passwordSelector);
+        return waits.getElementBy(passwordSelector);
     }
 
     public WebElement getButton(){

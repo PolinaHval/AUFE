@@ -25,25 +25,21 @@ public class DeleteProjectPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        try{
-            return driver.findElement(By.id("navigation-sub-users")).isDisplayed();
-        } catch (Exception ex){
-            return false;
-        }
+        return waits.isElementDisplayed(By.id("navigation-sub-users"));
     }
 
 
     public WebElement getDeleteButton(){
-        return driver.findElement(deleteSelector);
+        return waits.getElementBy(deleteSelector);
     }
 
 
     public WebElement getCheckbox(){
-        return driver.findElement(checkboxSelector);
+        return waits.getElementBy(checkboxSelector);
     }
 
     public WebElement getOk(){
-        return driver.findElement(okButtonSelector);
+        return waits.getElementBy(okButtonSelector);
     }
 
 }

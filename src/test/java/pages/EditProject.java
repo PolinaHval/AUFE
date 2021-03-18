@@ -25,22 +25,19 @@ public class EditProject extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        try {
-            return driver.findElement(By.id("navigation-sub-overview")).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+      return waits.isElementDisplayed(By.id("navigation-sub-overview"));
+
     }
 
     public WebElement getEditButton(){
-        return driver.findElement(editButtonSelector);
+        return waits.getElementBy(editButtonSelector);
     }
 
     public WebElement getNameProject (){
-        return driver.findElement(nameSelector);
+        return waits.getElementBy(nameSelector);
     }
 
     public WebElement getAddButton (){
-        return driver.findElement(addButtonSelector);
+        return waits.getClickableButton(addButtonSelector);
     }
 }

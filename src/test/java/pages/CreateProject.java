@@ -25,19 +25,15 @@ public class CreateProject extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        try {
-            return driver.findElement(By.id("accept")).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+            return waits.isElementDisplayed(By.id("accept"));
     }
 
     public WebElement getNameProject (){
-        return driver.findElement(nameSelector);
+        return waits.getElementBy(nameSelector);
     }
 
     public WebElement getAddButton (){
-        return driver.findElement(addButtonSelector);
+        return waits.getElementBy(addButtonSelector);
     }
 
 }
