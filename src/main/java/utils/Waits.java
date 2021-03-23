@@ -41,9 +41,9 @@ public class Waits {
         }
     }
 
-    public WebElement getClickableButton (By by) {
+    public WebElement isElementClickable (WebElement webElement) {
         try {
-            return webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
+            return webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
         }catch (TimeoutException ex){
             return null;
         }

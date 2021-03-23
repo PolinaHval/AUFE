@@ -38,6 +38,6 @@ public class EditProject extends BasePage {
     }
 
     public WebElement getAddButton (){
-        return waits.getClickableButton(addButtonSelector);
+        return waits.getElementBy(addButtonSelector);
     }
 }

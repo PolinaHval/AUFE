@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import wrappers.Button;
+import wrappers.UIElement;
 
 public class LoginPage extends BasePage {
 
@@ -30,16 +32,17 @@ public class LoginPage extends BasePage {
         return waits.isElementDisplayed(By.id("button_primary"));
     }
 
-    public WebElement getLogin(){
-        return waits.getElementBy(loginSelector);
+    public UIElement getLogin(){
+//        return waits.getElementBy(loginSelector);
+        return new UIElement(driver,loginSelector);
     }
 
     public WebElement getPassword(){
         return waits.getElementBy(passwordSelector);
     }
 
-    public WebElement getButton(){
-        return driver.findElement(buttonSelector);
+    public Button getButton(){
+        return new Button(driver,buttonSelector);
     }
 
     public String getErrorMessage (){
